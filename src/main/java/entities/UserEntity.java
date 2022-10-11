@@ -3,17 +3,12 @@ package entities;
 import entities.enums.RoleEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Role;
-
 import java.util.Collection;
-
 import javax.persistence.*;
 @Data
 @Entity
 @Slf4j
-@NoArgsConstructor
 @AllArgsConstructor
 
 @Table(name = "user" ,uniqueConstraints = @UniqueConstraint (columnNames = "userEmail"))
@@ -41,13 +36,13 @@ public class UserEntity {
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "id"))
 
-    private Collection<Role> roles;
+    private Collection<RoleClass> roles;
 
     public UserEntity() {
 
     }
 
-    public UserEntity(String firstName, String lastName, String email, String password, Collection<Role> roles) {
+    public UserEntity(String firstName, String lastName, String email, String password, Collection<RoleClass> roles) {
         super();
         this.userFirstName = userFirstName;
         this.userFamilyName = userFamilyName;
@@ -85,18 +80,18 @@ public class UserEntity {
     public void setPassword(String userPassword) {
         this.userPassword = userPassword;
     }
-    public Collection<Role> getRoles() {
+    public Collection<RoleClass> getRoles() {
         return roles;
     }
-    public void setRoles(Collection<Role> roles) {
+    public void setRoles(Collection<RoleClass> roles) {
         this.roles = roles;
     }
-
-}
-
-    
     @Enumerated(EnumType.STRING)
     private RoleEnum role;
 
 
 }
+
+
+
+

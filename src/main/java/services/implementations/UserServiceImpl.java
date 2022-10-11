@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
     public UserEntity save(UserRegistrationDto registrationDto) {
         UserEntity user = new UserEntity(registrationDto.getFirstName(),
                 registrationDto.getLastName(), registrationDto.getEmail(),
-                passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("ROLE_USER")));
+                passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new RoleClass("ROLE_USER")));
 
         return userRepository.save(user);
     }
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
         if(userEntity == null) {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
-        return new org.springframework.security.core.userdetails.User(userEntity.getUserEmail()  , userEntity.getUserPassword(), mapRolesToAuthorities( role.getRoles()));
+        return new org.springframework.security.core.userdetails.User(userEntity.getUserEmail()  , userEntity.getUserPassword(), mapRolesToAuthorities(userEntity.getRoles()));
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<RoleClass> roles){

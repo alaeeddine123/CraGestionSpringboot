@@ -1,16 +1,11 @@
 package entities;
 
-import lombok.*;
 import lombok.extern.slf4j.Slf4j;
-
 import javax.persistence.*;
-
-
 
 @Entity
 @Table(name = "role")
 @Slf4j
-
 
 public class RoleClass {
 
