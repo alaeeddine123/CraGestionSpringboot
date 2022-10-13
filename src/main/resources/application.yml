@@ -1,0 +1,13 @@
+spring :
+  datasource :
+    platform: postgres
+    url : jdbc:mysql://localhost:3306/emplyeedb
+    username : root
+    password : passwd
+  jpa:
+    hibernate :
+    ddl-auto: create
+    properties :
+    dialect : org.hibernate.dialect.MySQL8Dialect
+    format_sql  : true
+    show-sql : true
